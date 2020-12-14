@@ -3,6 +3,7 @@ import './HerzbergWidget.css';
 import { Herzberg } from '../../components/internal/herzberg/herzberg';
 
 export function HerzbergWidget() {
+
   return (
     <div className="HerzbergWidget">
       <Herzberg 

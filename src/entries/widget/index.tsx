@@ -3,10 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {HerzbergWidget} from './HerzbergWidget';
 import reportWebVitals from '../../reportWebVitals';
+import {Helmet} from 'react-helmet';
+
+const sParams = new URLSearchParams(window.location.search);
+const customStyles = sParams.get('custom-styles');
+
+let content = <HerzbergWidget />
+
+if(customStyles){
+  console.log('Passed custom styles: ', customStyles);
+  content = <>
+    <Helmet>
+      <link rel="stylesheet" href={customStyles} />
+    </Helmet>
+    {content}
+  </>
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <HerzbergWidget />
+    {content}
   </React.StrictMode>,
   document.getElementById('root')
 );
