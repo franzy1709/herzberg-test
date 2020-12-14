@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Herzberg } from './components/internal/herzberg/herzberg';
+import { Herzberg } from '../../components/internal/herzberg/herzberg';
+// import { Herzberg } from './components/internal/herzberg/herzberg';
 
 function App() {
   return (
