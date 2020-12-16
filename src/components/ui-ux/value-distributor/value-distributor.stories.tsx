@@ -11,3 +11,8 @@ const Template: Story<ValueDistributorProps> = (args) => <ValueDistributor {...a
 
 export const Default = Template.bind({});
 Default.args = {}
+
+export const Small = Template.bind({});
+Small.args = {
+  variant: 'small'
+}
