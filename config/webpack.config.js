@@ -208,9 +208,18 @@ module.exports = function (webpackEnv) {
       pathinfo: isEnvDevelopment,
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
-      filename: isEnvProduction
-        ? 'static/js/[name].[contenthash:8].js'
-        : isEnvDevelopment && 'static/js/[name].bundle.js',
+      // filename: isEnvProduction
+      //   ? 'static/js/[name].[contenthash:8].js'
+      //   : isEnvDevelopment && 'static/js/[name].bundle.js',
+      filename(pathdata){
+        const pg = paths.appPages.find(p=>p.name===pathdata.chunk.name);
+        if(pg && pg.isWidgetBundle){
+          return '[name].js'
+        }
+        return isEnvProduction
+          ? 'static/js/[name].[contenthash:8].js'
+          : isEnvDevelopment && 'static/js/[name].bundle.js'
+      },
       // TODO: remove this when upgrading to webpack 5
       futureEmitAssets: true,
       // There are also additional JS chunk files if you use code splitting.
@@ -304,14 +313,24 @@ module.exports = function (webpackEnv) {
       // https://twitter.com/wSokra/status/969633336732905474
       // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
       splitChunks: {
-        chunks: 'all',
+        // chunks: 'all',
+        chunks(chunk){
+          const pg = paths.appPages.find(p=>p.name===chunk.name);
+          return !!(pg && !pg.isWidgetBundle);
+        },
         name: false,
       },
       // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985
       // https://github.com/facebook/create-react-app/issues/5358
       runtimeChunk: {
-        name: entrypoint => `runtime-${entrypoint.name}`,
+        name: entrypoint => {
+          const pg = paths.appPages.find(p=>p.name === entrypoint.name);
+          if(pg && pg.isWidgetBundle){
+            return entrypoint.name;
+          }
+          return `runtime-${entrypoint.name}`
+        },
       },
     },
     resolve: {
@@ -794,7 +813,7 @@ function buildHtmlPlugins(paths, isEnvProduction){
         Object.assign(
           {},
           {
-            inject: true,
+            inject: !appPage.isWidgetBundle,
             template: appPage.appHtml,
             filename: `${appPage.name}.html`,
             title: appPage.title,

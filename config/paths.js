@@ -69,6 +69,13 @@ module.exports = {
       title: "HerzbergWidget",
       appHtml: resolveApp("public/widget.html"),
       appIndexJs: resolveApp("src/entries/widget/index.tsx")
+    },
+    {
+      name: "web-widget",
+      title: "HerzbergWebWidget",
+      appHtml: resolveApp("public/web-widget.html"),
+      appIndexJs: resolveApp("src/entries/web-widget/index.tsx"),
+      isWidgetBundle: true
     }
   ],
   appPackageJson: resolveApp('package.json'),
