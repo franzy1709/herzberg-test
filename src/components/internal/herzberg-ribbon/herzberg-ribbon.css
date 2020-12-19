@@ -1,15 +1,13 @@
-.Herzberg.herzberg-container{
-  max-width: 640px;
-  min-width: 320px;
-
-  font-family: Roboto, Arial, Helvetica, sans-serif;
+.HerzbergRibbon .herzberg-container{
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   height: 100%;
 
+  margin-bottom: 36px;
 }
 
-.Herzberg .questions-container{
+.HerzbergRibbon .questions-container{
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -21,25 +19,25 @@
   overflow-y: auto;
 }
 
-.Herzberg .question {
+.HerzbergRibbon .question {
   flex-basis: 50%;
   flex-grow: 1;
   flex-shrink: 1;
 
-  font-size: 24px;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 20px;
   box-sizing: border-box;
 }
 
-.Herzberg .first-question{
+.HerzbergRibbon .first-question{
   padding-right: 16px;
 }
 
-.Herzberg .second-question{
+.HerzbergRibbon .second-question{
   padding-left: 16px;
 }
 
-.Herzberg .values-container{
+.HerzbergRibbon .values-container{
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -54,7 +52,10 @@
   flex-shrink: 0;
 }
 
-.Herzberg .values-distribution{
+.HerzbergRibbon .values-distribution{
   flex-grow: 0;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }

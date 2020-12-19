@@ -9,7 +9,7 @@ export type HerzbergProps = {
 
 export const Herzberg: React.FC<HerzbergProps> = ({testQuestions, className = '', ...htmlProps}) => {
   const [leftSide, rightSide] = testQuestions[0];
-  return (<div className={jc('herzberg-container', className)} {...htmlProps}>
+  return (<div className={jc('Herzberg herzberg-container', className)} {...htmlProps}>
     <div className="questions-container">
       <div className="question first-question">{leftSide}</div>
       <div className="question second-question">{rightSide}</div>

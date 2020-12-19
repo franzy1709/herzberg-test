@@ -1,30 +1,13 @@
 import React from 'react';
 import './App.css';
-import { Herzberg } from '../../components/internal/herzberg/herzberg';
-// import { Herzberg } from './components/internal/herzberg/herzberg';
+import herzbergTest from '../../components/internal/herzberg-ribbon/fixtures/herzberg.json';
+import { HerzbergRibbon } from '../../components/internal/herzberg-ribbon/herzberg-ribbon';
 
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <Herzberg 
-        testQuestions={[
-          ['Для тебя важна хорошо оплачиваемая работа, даже если ты не получаешь должного признания.',
-          'Для тебя важно признание и похвала, даже если оплата не так высока.']
-        ]}
+      <HerzbergRibbon 
+        testQuestions={herzbergTest}
       />
     </div>
   );
